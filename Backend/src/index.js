@@ -3,8 +3,8 @@ import express from "express";
 import notesRoutes from "./Routes/notesRoutes.js";
 import dotenv from "dotenv";
 import connectDB from "../config/db.js";
-import mongoose, { mongo } from "mongoose";
-
+import mongoose from "mongoose";
+import rateLimiter from '../middleware/rateLimiter.js'
 dotenv.config();
 
 dns.setServers(["8.8.8.8"]);
@@ -14,7 +14,11 @@ const PORT=process.env.PORT || 5000
 connectDB();
 
 app.use(express.json());
-
+//app.use((req,res,next)=>{
+  //  console.log(` the req method is $//{req.method} and the req url is ${req.url}`)
+  //  next()
+//})
+app.use(rateLimiter)
 app.use("/api/notes", notesRoutes);
 
 app.listen(PORT, () => {
