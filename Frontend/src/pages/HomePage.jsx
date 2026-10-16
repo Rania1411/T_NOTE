@@ -210,7 +210,6 @@ const HomePage = () => {
 
         <footer className="mt-16 border-t border-[#d9ad62]/10 pt-6 text-center">
           <p className="text-xs tracking-wide text-[#727c8e]">
-            T_NOTE <span className="px-2 text-[#d9ad62]">✦</span>
             A little space for what matters.
           </p>
         </footer>
